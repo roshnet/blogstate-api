@@ -2,3 +2,6 @@ __pycache__/
 .vscode
 .idea
 venv
+
+# Sensitive files
+.env
