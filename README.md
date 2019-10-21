@@ -27,11 +27,11 @@ To create a virtual environment, run:
     $ python3 -m venv venv
 (or use `virtualenv` instead).
 
-To activate it for Linux-based systems -
+To activate it in Linux-based systems -
 
     $ source venv/bin/activate
 
-To activate it for Windows -
+To activate it in Windows -
 
     $ \venv\Scripts\activate.bat
 
@@ -47,7 +47,7 @@ A gunicorn server is used to serve the app.
 
     (venv) $ gunicorn index:app --reload
 
-This starts the server at http://localhost:800 by default. The `--reload` restarts the server on any file changes.
+This starts the server at http://localhost:8000 by default. The `--reload` restarts the server on any file changes.
 
 ### Testing endpoints
 
