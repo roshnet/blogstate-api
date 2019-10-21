@@ -5,7 +5,7 @@ This is an under-development API for [BlogState](https://blogstate.pythonanywher
 
 If you plan to contribute, below are the steps you need to follow.
 
-### Fork, and clone the repository.
+### :arrow_right: Fork, and clone the repository.
 
 If you have SSH keys, use -
 ```sh
@@ -17,10 +17,10 @@ If you don't, use HTTPS instead -
 ```
 where, `<username>` is your own GitHub username.
 
-### Navigate to project root
+### :arrow_right: Navigate to project root
 Next, `cd blogstate-api/` to get inside the project directory.
 
-### Create and activate a virtual environment (optional / recommended)
+### :arrow_right: Create and activate a virtual environment (optional / recommended)
 
 To create a virtual environment, run:
 
@@ -35,13 +35,13 @@ To activate it in Windows -
 
     $ \venv\Scripts\activate.bat
 
-### Install the requirements:
+### :arrow_right: Install the requirements:
 
     (venv) $ pip install -r requirements.txt
 
 > Feel free to use pipenv too. Because pipenv is slow, it's better to manually create and activate a virtual environment, and install the requirements.
 
-### Run the development server
+### :arrow_right: Run the development server
 
 A gunicorn server is used to serve the app.
 
