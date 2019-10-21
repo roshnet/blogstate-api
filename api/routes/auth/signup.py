@@ -2,7 +2,7 @@ from api import app
 
 
 class SignupResource:
-    def on_post(self, req, resp):
+    def on_get(self, req, resp):
         resp.media = f"/signup"
 
 
