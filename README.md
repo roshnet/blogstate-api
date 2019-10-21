@@ -47,7 +47,7 @@ A gunicorn server is used to serve the app.
 
     (venv) $ gunicorn index:app --reload
 
-This starts the server at http://localhost:8000 by default. The `--reload` restarts the server on any file changes.
+This starts the server at http://localhost:8000 by default. The `--reload` flag enables hot reloads, i.e. it restarts the server on any file changes.
 
 ### Testing endpoints
 
