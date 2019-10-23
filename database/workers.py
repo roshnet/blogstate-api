@@ -3,7 +3,7 @@
 from database import cur
 
 
-def exists(tbl_name, **kwargs):
+def record_exists(tbl_name, **kwargs):
     """
     Checks if the given key-value pairs exist in the specified table.
     
