@@ -3,3 +3,4 @@ gunicorn==19.9.0
 httpie==1.0.3
 PyMySQL==0.9.3
 python-dotenv==0.10.3
+peewee==3.11.2
