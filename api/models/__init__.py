@@ -12,7 +12,8 @@ db = pw.MySQLDatabase('blogstate',
 
 class PeeweeConnectionMiddleware(object):
     def process_request(self, req, resp):
-        db.connect()
+        if db.is_closed():
+            db.connect()
 
 
 # -: Base model to set database :- #
