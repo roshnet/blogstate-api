@@ -20,9 +20,9 @@ class LoginResource:
         """
 
         creds = json.loads(req.stream.read())
-        record = Credentials.get(Credentials.username == creds['username'])
+        _record = Credentials.get(Credentials.username == creds['username'])
 
-        if cph(record.hash, gph(creds['passwd'])):
+        if cph(_record.hash, creds['passwd']):
             resp.body = json.dumps({"status": "verified"})
         else:
             resp.body = json.dumps({"status": "unauthorised"})
