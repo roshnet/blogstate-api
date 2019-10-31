@@ -1,5 +1,5 @@
 # :zap: BlogState API
-This is an under-development API for [BlogState](https://blogstate.pythonanywhere.com), built in [Falcon](https://falconframework.org), and [PyMySQL](https://pymysql.readthedocs.io/en/latest/) for database interactions.
+This is an under-development API for [BlogState](https://blogstate.pythonanywhere.com), built in [Falcon](https://falconframework.org), and [peewee ORM](http://docs.peewee-orm.com) for database interactions.
 
 # Setting it up
 
