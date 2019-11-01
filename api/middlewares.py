@@ -27,6 +27,8 @@ class SourceVerifierMiddleware(object):
 
         if 'API-KEY' in req.headers.keys():
             if not req.headers['API-KEY'] == KEY:
-                raise falcon.HTTPBadRequest('Untrusted Source', 'Agent unauthorised')
+                raise falcon.HTTPBadRequest('Untrusted Source',
+                                            'Agent unauthorised')
         else:
-            raise falcon.HTTPBadRequest('Untrusted Source', 'Agent unauthorised')
+            raise falcon.HTTPBadRequest('Untrusted Source',
+                                        'Agent unauthorised')

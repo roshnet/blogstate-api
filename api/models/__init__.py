@@ -21,6 +21,7 @@ class Credentials(BaseModel):
     hash = pw.CharField()
     email = pw.CharField()
     name = pw.CharField()
+
     class Meta:
         db_table = 'credentials'
 
@@ -32,5 +33,6 @@ class Posts(BaseModel):
     body = pw.TextField()
     likes = pw.IntegerField()
     time = datetime.datetime.now
+
     class Meta:
         db_table = 'posts'

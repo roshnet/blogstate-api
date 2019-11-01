@@ -13,7 +13,7 @@ class LoginResource:
         """
         Expected params as body of POST request:
             :param `username`
-            :param `passwd` 
+            :param `passwd`
         """
 
         _creds = json.loads(req.stream.read())
