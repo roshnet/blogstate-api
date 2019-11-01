@@ -19,12 +19,11 @@ class PeeweeConnectionMiddleware(object):
 
 
 class SourceVerifierMiddleware(object):
+    """
+    Check if the agent calling the API is a trusted source,
+    by checking the API key in request headers.
+    """
     def process_request(self, req, resp):
-        """
-        Check if the agent calling the API is a trusted source,
-        by checking the API key in request headers.
-        """
-
         if 'API-KEY' in req.headers.keys():
             if not req.headers['API-KEY'] == KEY:
                 raise falcon.HTTPBadRequest('Untrusted Source',
