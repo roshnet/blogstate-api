@@ -1,6 +1,5 @@
 import json
 from api import app
-from api.security import verify_source
 
 # Models for database
 from api.models import Credentials as Creds
@@ -17,7 +16,6 @@ class LoginResource:
             :param `passwd` 
         """
 
-        verify_source(req)
         _creds = json.loads(req.stream.read())
 
         record = Creds.get_or_none(Creds.username == _creds['username'])

@@ -8,14 +8,6 @@ db = pw.MySQLDatabase('blogstate',
                       host=HOST)
 
 
-# :- Middleware for falcon.API() -: #
-
-class PeeweeConnectionMiddleware(object):
-    def process_request(self, req, resp):
-        if db.is_closed():
-            db.connect()
-
-
 # -: Base model to set database :- #
 
 class BaseModel(pw.Model):

@@ -1,10 +1,13 @@
 import falcon
-from api.models import PeeweeConnectionMiddleware
+from api.middlewares import (
+    PeeweeConnectionMiddleware,
+    SourceVerifierMiddleware
+)
 
 
-app = falcon.API(
-    middleware=[
-        PeeweeConnectionMiddleware()
+app = falcon.API(middleware=[
+        PeeweeConnectionMiddleware(),
+        SourceVerifierMiddleware()
     ]
 )
 
