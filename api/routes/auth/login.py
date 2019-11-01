@@ -16,11 +16,22 @@ class LoginResource:
             :param `passwd` 
         """
 
-        creds = json.loads(req.stream.read())
-        record = Credentials.get(Credentials.username == creds['username'])
+        _creds = json.loads(req.stream.read())
 
-        if cph(record.hash, creds['passwd']):
-            resp.body = json.dumps({"status": "verified"})
+        if Credentials.select().where(
+          Credentials.username == _creds['username']).exists():
+            rec = Credentials.get(Credentials.username == _creds['username'])
+            if cph(rec.hash, _creds['passwd']):
+                resp.body = json.dumps({"status": "verified"})
+            """
+            Above approach is failsafe, but slow, since "searching for
+            username existence" and then "fetching hash for that username"
+            are two different ops, and take alomst double the time.
+
+            A better approach is to search and fetch the hash for the
+            username in a single query.
+            It would double speed and also reduce load on the server.
+            """
         else:
             resp.body = json.dumps({"status": "unauthorised"})
 
