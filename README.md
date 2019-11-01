@@ -51,4 +51,4 @@ This starts the server at http://localhost:8000 by default. The `--reload` flag 
 
 ### Testing endpoints
 
-You may use `httpie` for a CLI, or  a GUI alternative like [Postman](https://www.getpostman.com/downloads/) or [Insomnia](https://insomnia.rest) to test the necessary endpoints.
+You may use `httpie` or `curl` for a CLI, or  a GUI alternative like [Postman](https://www.getpostman.com/downloads/) or [Insomnia](https://insomnia.rest) to test the necessary endpoints.
