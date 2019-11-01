@@ -22,7 +22,12 @@ class LoginResource:
           Credentials.username == _creds['username']).exists():
             rec = Credentials.get(Credentials.username == _creds['username'])
             if cph(rec.hash, _creds['passwd']):
-                resp.body = json.dumps({"status": "verified"})
+                resp.body = json.dumps({"status": "pass"})
+            else:
+                resp.body = json.dumps({
+                    "status": "fail",
+                    "msg": "Incorrect password"
+                })
             """
             Above approach is failsafe, but slow, since "searching for
             username existence" and then "fetching hash for that username"
@@ -33,7 +38,10 @@ class LoginResource:
             It would double speed and also reduce load on the server.
             """
         else:
-            resp.body = json.dumps({"status": "unauthorised"})
+            resp.body = json.dumps({
+                "status": "fail",
+                "msg": "Username not found"
+            })
 
 
 app.add_route('/login', LoginResource())
