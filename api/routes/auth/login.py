@@ -5,10 +5,7 @@ from api import app
 from api.models import Credentials
 
 # Password hash validation
-from werkzeug.security import (
-    check_password_hash as cph,
-    generate_password_hash as gph
-)
+from werkzeug.security import check_password_hash as cph
 
 
 class LoginResource:
@@ -22,7 +19,7 @@ class LoginResource:
         creds = json.loads(req.stream.read())
         record = Credentials.get(Credentials.username == creds['username'])
 
-        if cph(record.hash, gph(creds['passwd'])):
+        if cph(record.hash, creds['passwd']):
             resp.body = json.dumps({"status": "verified"})
         else:
             resp.body = json.dumps({"status": "unauthorised"})
