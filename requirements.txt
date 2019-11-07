@@ -4,3 +4,4 @@ httpie==1.0.3
 python-dotenv==0.10.3
 peewee==3.11.2
 werkzeug
+pymysql
