@@ -7,8 +7,6 @@ import os
 
 load_dotenv()
 
-KEY = os.getenv('API_KEY')
-
 
 class PeeweeConnectionMiddleware(object):
     # :- Middleware for peewee reconnection -: #
@@ -21,9 +19,16 @@ class PeeweeConnectionMiddleware(object):
 class SourceVerifierMiddleware(object):
     """
     Check if the agent calling the API is a trusted source,
-    by checking the API key in request headers.
+    by checking the authorization token in request headers.
     """
     def process_request(self, req, resp):
-        if not req.get_header('API-KEY') == KEY:
-            raise falcon.HTTPBadRequest('Untrusted Source',
-                                        'Agent unauthorised')
+        if not self._load_token_and_validate(req):
+            raise falcon.HTTPUnauthorized('No authorization token found'
+                                          'in request.')
+
+    def _load_token_and_validate(self, req):
+        self.KEY = os.getenv('AUTH')
+
+        if req.get_header('Authorization') == self.KEY:
+            return True
+        return False
