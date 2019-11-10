@@ -36,7 +36,12 @@ class SignupResource:
                 email=_info['email'],
                 name=_info['name']
             )
-            resp.body = json.dumps({"status": "pass"})
+            # Get id of last insertion and pass in response
+            ins_id = Creds.select().order_by(Creds.user_id.desc()).get()
+            resp.body = json.dumps({
+                "status": "pass",
+                "user_id": ins_id.user_id
+            })
 
 
 app.add_route('/signup', SignupResource())
