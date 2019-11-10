@@ -29,6 +29,7 @@ class Credentials(BaseModel):
 class Posts(BaseModel):
     post_id = pw.IntegerField(primary_key=True)
     author_uid = pw.CharField()
+    post_url = pw.CharField()
     title = pw.CharField()
     body = pw.TextField()
     likes = pw.IntegerField(default=0)
