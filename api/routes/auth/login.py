@@ -23,7 +23,8 @@ class LoginResource:
             if cph(record.hash, _creds['passwd']):
                 resp.body = json.dumps({
                     "status": "pass",
-                    "user_id": record.user_id
+                    "user_id": record.user_id,
+                    "user_name": record.name
                 })
             else:
                 resp.body = json.dumps({
