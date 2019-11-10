@@ -6,24 +6,33 @@ import uuid
 
 
 class FetchPostResource:
-    def on_get(self, req, resp, url):
-        post = Posts.get_or_none(Posts.post_url == url)
-        if post:
-            user = Creds.get(Creds.user_id == post.author_uid)
-            resp.body = json.dumps({
-                "status": "pass",
-                "author": {
-                    "name": user.name,
-                    "username": user.username
-                },
-                "post": {
-                    "title": post.title,
-                    "body": post.body
-                }
-            })
+    def on_get(self, req, resp, username, url):
+        user = Creds.get_or_none(Creds.username == username)
+
+        if user:
+            post = Posts.get_or_none(Posts.post_url == url)
+            if post:
+                resp.body = json.dumps({
+                    "status": "pass",
+                    "author": {
+                        "name": user.name,
+                        "username": user.username
+                    },
+                    "post": {
+                        "title": post.title,
+                        "body": post.body
+                    }
+                })
+            else:
+                resp.body = json.dumps({
+                    "status": "fail",
+                    "msg": "Post not found under specified user"
+                })
         else:
             resp.body = json.dumps({
-                "status": "fail"
+                "status": "fail",
+                "msg": "No such user found"
             })
 
-app.add_route('/posts/{url}', FetchPostResource())
+
+app.add_route('/{username}/post/{url}', FetchPostResource())
