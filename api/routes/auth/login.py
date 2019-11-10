@@ -21,7 +21,10 @@ class LoginResource:
         record = Creds.get_or_none(Creds.username == _creds['username'])
         if record:
             if cph(record.hash, _creds['passwd']):
-                resp.body = json.dumps({"status": "pass"})
+                resp.body = json.dumps({
+                    "status": "pass",
+                    "user_id": record.user_id
+                })
             else:
                 resp.body = json.dumps({
                     "status": "fail",
