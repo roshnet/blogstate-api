@@ -42,4 +42,4 @@ class FetchPostResource:
             })
 
 
-app.add_route('/{username}/post/{url}', FetchPostResource())
+app.add_route('/posts/{username}/{url}', FetchPostResource())
