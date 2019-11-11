@@ -18,7 +18,8 @@ class FetchTitlesResource:
             for post in posts:
                 payload.append({
                     "date": str(post['time']),
-                    "title": post['title']
+                    "title": post['title'],
+                    "url": post['post_url']
                 })
             resp.body = json.dumps({
                 "status": "pass",
@@ -31,4 +32,4 @@ class FetchTitlesResource:
             })
 
 
-app.add_route('/fetch/titles/{username}', FetchTitlesResource())
+app.add_route('/posts/titles/{username}', FetchTitlesResource())
