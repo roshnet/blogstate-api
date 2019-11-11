@@ -19,7 +19,8 @@ class FetchPostsByUserResource:
                     "id": post['post_id'],
                     "url_id": post['post_url'],
                     "title": post['title'],
-                    "body": post['body']
+                    "body": post['body'],
+                    "date": str(post['time'])
                 })
             # Not sending author username in response,
             # as it is already specified/known by the calling agent.

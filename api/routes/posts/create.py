@@ -21,7 +21,7 @@ class CreatePostResource:
         except Exception as err:
             resp.body = json.dumps({
                 "status": "fail",
-                "error": err
+                "error": str(err)
             })
 
 

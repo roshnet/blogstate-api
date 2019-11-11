@@ -21,7 +21,8 @@ class FetchPostResource:
                         },
                         "post": {
                             "title": post.title,
-                            "body": post.body
+                            "body": post.body,
+                            "date": str(post.time)
                         }
                     })
                 else:

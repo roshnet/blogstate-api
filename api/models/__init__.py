@@ -33,7 +33,7 @@ class Posts(BaseModel):
     title = pw.CharField()
     body = pw.TextField()
     likes = pw.IntegerField(default=0)
-    time = pw.DateTimeField(default=datetime.datetime.now)
+    time = pw.DateField(default=datetime.datetime.now)
 
     class Meta:
         db_table = 'posts'
