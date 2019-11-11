@@ -10,7 +10,7 @@ class FetchPostsByUserResource:
         if user is not None:
             posts = Posts.select().where(
                 Posts.author_uid == user.get_id()
-            ).dicts()
+            ).order_by(Posts.post_id.desc()).dicts()
 
             # Create a payload out of query results
             payload = []
