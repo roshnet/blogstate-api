@@ -1,11 +1,21 @@
 # All falcon middlewares #
 
 from api.models import db
-from dotenv import load_dotenv
 import falcon
+import inspect
 import os
 
-load_dotenv()
+
+ENV_FILENAME = '.env'
+
+# Switching to reading static file, since loading environment
+# variables causes nuisance in production server.
+
+this_module = inspect.getfile(inspect.currentframe())
+this_dir = os.path.dirname(this_module)
+envfile_path = os.path.join(this_dir, ENV_FILENAME)
+with open(envfile_path) as fp:
+    KEY = fp.readline().rstrip("\n")
 
 
 class PeeweeConnectionMiddleware(object):
@@ -27,8 +37,6 @@ class SourceVerifierMiddleware(object):
                                           'in request.')
 
     def _load_token_and_validate(self, req):
-        self.KEY = os.getenv('AUTH')
-
-        if req.get_header('Authorization') == self.KEY:
+        if req.get_header('Authorization') == KEY:
             return True
         return False
