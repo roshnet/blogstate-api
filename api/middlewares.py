@@ -1,9 +1,17 @@
 # All falcon middlewares #
-
-from api.models import db
+from database import (
+    HOST, USER,
+    PASSWD, DATABASE
+)
 import falcon
+import peewee as pw
 import inspect
 import os
+
+db = pw.MySQLDatabase(DATABASE,
+                      user=USER,
+                      password=PASSWD,
+                      host=HOST)
 
 
 ENV_FILENAME = '.env'
@@ -24,6 +32,10 @@ class PeeweeConnectionMiddleware(object):
     def process_request(self, req, resp):
         if db.is_closed():
             db.connect()
+    
+    def process_response(self, req, resp, resource, req_succeeded):
+        if not db.is_closed():
+            db.close()
 
 
 class SourceVerifierMiddleware(object):

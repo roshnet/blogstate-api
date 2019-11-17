@@ -1,14 +1,6 @@
-from database import (
-    HOST, USER,
-    PASSWD, DATABASE
-)
+from api.middlewares import db
 import datetime
 import peewee as pw
-
-db = pw.MySQLDatabase(DATABASE,
-                      user=USER,
-                      password=PASSWD,
-                      host=HOST)
 
 
 # -: Base model to set database :- #
