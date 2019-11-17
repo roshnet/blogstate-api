@@ -1,8 +1,11 @@
-from database import HOST, USER, PASSWD
+from database import (
+    HOST, USER,
+    PASSWD, DATABASE
+)
 import datetime
 import peewee as pw
 
-db = pw.MySQLDatabase('blogstate',
+db = pw.MySQLDatabase(DATABASE,
                       user=USER,
                       password=PASSWD,
                       host=HOST)
