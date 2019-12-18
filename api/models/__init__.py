@@ -27,6 +27,7 @@ class Posts(BaseModel):
     post_url = pw.CharField()
     title = pw.CharField()
     body = pw.TextField()
+    preview_text = pw.CharField()
     likes = pw.IntegerField(default=0)
     time = pw.DateField(default=datetime.datetime.now)
 
