@@ -27,8 +27,7 @@ class FetchPostsByUserResource:
 
             resp.body = json.dumps({
                 "status": "pass",
-                "posts": payload,
-                "count": len(posts)
+                "result": payload
             })
         else:
             resp.body = json.dumps({

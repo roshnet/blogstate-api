@@ -1,1 +1,1 @@
-from . import fetchinfo
+from . import info

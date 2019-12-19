@@ -6,8 +6,8 @@ import uuid
 
 
 class FetchPostResource:
+    """Fetch a single post described by username and post ID"""
     def on_get(self, req, resp, username, url):
-
         post = Posts.get_or_none(Posts.post_url == url)
         if not post is None:
             user = Creds.get_or_none(Creds.user_id == post.author_uid)
@@ -15,14 +15,14 @@ class FetchPostResource:
                 if user.username == username:
                     resp.body = json.dumps({
                         "status": "pass",
-                        "author": {
-                            "name": user.name,
-                            "username": user.username
-                        },
-                        "post": {
+                        "result": {
                             "title": post.title,
                             "body": post.body,
-                            "date": str(post.time)
+                            "date": str(post.time),
+                            "author": {
+                                "name": user.name,
+                                "username": user.username
+                            },
                         }
                     })
                 else:
@@ -33,7 +33,7 @@ class FetchPostResource:
             else:
                 resp.body = json.dumps({
                     "status": "fail",
-                    "msg": "No author found for this blog post"
+                    "msg": "Cannot find the author of this blog post"
                 })
         else:
             resp.body = json.dumps({

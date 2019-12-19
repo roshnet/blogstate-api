@@ -5,7 +5,7 @@ import json
 
 
 class FetchUserInfoResource:
-    """Return all usable info for a specified user"""
+    """Return all (template-) usable information for a specified user"""
     def on_get(self, req, resp, username):
         user = Creds.get_or_none(Creds.username == username)
         if user is not None:
@@ -13,11 +13,10 @@ class FetchUserInfoResource:
                 Posts.author_uid == user.get_id()
             ).dicts()
 
-            # Specify here what fields need to be used
-            # in templates.
+            # Specify all fields here to be used in templates
             resp.body = json.dumps({
                 "status": "pass",
-                "userinfo": {
+                "result": {
                     "user_id": user.get_id(),
                     "username": user.username,
                     "name": user.name,
@@ -27,8 +26,12 @@ class FetchUserInfoResource:
                     }
                 }
             })
-            # Include fields like followers/following in
+            # Include fields like followers/following count in
             # future versions
+        else:
+            resp.body = json.dumps({
+                "status": "fail"
+            })
 
 
-app.add_route('/fetch/{username}', FetchUserInfoResource())
+app.add_route('/users/{username}', FetchUserInfoResource())
