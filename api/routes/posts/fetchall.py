@@ -19,7 +19,7 @@ class FetchPostsByUserResource:
                     "id": post['post_id'],
                     "url_id": post['post_url'],
                     "title": post['title'],
-                    "body": post['body'],
+                    "preview_text": post['preview_text'],
                     "date": str(post['time'])
                 })
             # Not sending author username in response,
