@@ -23,8 +23,7 @@ class FetchTitlesResource:
                 })
             resp.body = json.dumps({
                 "status": "pass",
-                "titles": payload,
-                "count": len(posts)
+                "result": payload
             })
         else:
             resp.body = json.dumps({
