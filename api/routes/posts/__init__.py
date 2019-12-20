@@ -1,4 +1,4 @@
-from . import create
-from . import fetch
-from . import fetchall
-from . import fetchtitles
+from api.routes.posts import create         # noqa
+from api.routes.posts import fetch          # noqa
+from api.routes.posts import fetchall       # noqa
+from api.routes.posts import fetchtitles    # noqa

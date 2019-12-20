@@ -2,16 +2,15 @@ from api import app
 from api.models import Posts
 from api.models import Credentials as Creds
 import json
-import uuid
 
 
 class FetchPostResource:
     """Fetch a single post described by username and post ID"""
     def on_get(self, req, resp, username, url):
         post = Posts.get_or_none(Posts.post_url == url)
-        if not post is None:
+        if post is not None:
             user = Creds.get_or_none(Creds.user_id == post.author_uid)
-            if not user is None:
+            if user is not None:
                 if user.username == username:
                     resp.body = json.dumps({
                         "status": "pass",

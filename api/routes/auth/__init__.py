@@ -1,4 +1,2 @@
-# Import all submodules within `auth`
-
-from api.routes.auth import login
-from api.routes.auth import signup
+from api.routes.auth import login     # noqa
+from api.routes.auth import signup    # noqa

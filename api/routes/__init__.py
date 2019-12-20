@@ -1,6 +1,6 @@
 # Import modules containing route defs
 
-import api.routes.auth
-import api.routes.default
-import api.routes.posts
-import api.routes.users
+import api.routes.auth       # noqa
+import api.routes.default    # noqa
+import api.routes.posts      # noqa
+import api.routes.users      # noqa

@@ -11,4 +11,4 @@ app = falcon.API(middleware=[
     ]
 )
 
-import api.routes
+import api.routes    # noqa

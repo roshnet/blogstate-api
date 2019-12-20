@@ -1,1 +1,1 @@
-from . import info
+from api.routes.users import info    # noqa
