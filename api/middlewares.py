@@ -39,7 +39,7 @@ class PeeweeConnectionMiddleware(object):
             db.close()
 
 
-class SourceVerifierMiddleware(object):
+class AuthorizationMiddleware(object):
     """
     Check if the agent calling the API is a trusted source,
     by checking the authorization token from request headers.
