@@ -11,7 +11,7 @@ class BaseModel(pw.Model):
 
 
 class Credentials(BaseModel):
-    user_id = pw.IntegerField(primary_key=True)
+    user_id = pw.AutoField()
     username = pw.CharField()
     hash = pw.CharField()
     email = pw.CharField()
@@ -22,7 +22,7 @@ class Credentials(BaseModel):
 
 
 class Posts(BaseModel):
-    post_id = pw.IntegerField(primary_key=True)
+    post_id = pw.AutoField()
     author_uid = pw.CharField()
     post_url = pw.CharField()
     title = pw.CharField()
@@ -33,3 +33,14 @@ class Posts(BaseModel):
 
     class Meta:
         db_table = 'posts'
+
+
+class Comments(BaseModel):
+    comment_id = pw.AutoField()
+    author_uid = pw.IntegerField()
+    post_uid = pw.IntegerField()
+    body = pw.TextField()
+    time = pw.DateField(default=datetime.datetime.now)
+
+    class Meta:
+        db_table = 'comments'
