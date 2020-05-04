@@ -1,3 +1,10 @@
+"""
+Set local machine up for API development.
+- Generates config file
+- Creates tables
+- Creates virtual environment.
+"""
+
 import configparser
 from getpass import getpass
 import peewee as pw
@@ -38,7 +45,8 @@ def verify_credentials_and_setup_tables():
 
 def set_interactive_credentials():
     """
-    Obtain database from user to store in config file.
+    Obtain database variables from user to connect to database, and store in
+    configuration file.
     """
 
     config['DEFAULT']['HOST'] = input(
@@ -72,22 +80,15 @@ def generate_config_file():
     # the API. For development purposes, it can be set to something easy to
     # remember.
 
-    with open('config', 'w') as cfg:
+    with open('config.ini', 'w') as cfg:
         config.write(cfg)
-
-
-def main():
-    """
-    Set local machine up for API development.
-    Generates config file, creates tables, creates virtual environment.
-    """
 
 
 if __name__ == "__main__":
     print(
-        '================================'
+        '\n================================\n'
         '+++ DEVELOPMENT SERVER SETUP +++'
-        '================================'
+        '\n================================\n'
     )
     sleep(1)
 
