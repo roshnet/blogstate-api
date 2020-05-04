@@ -8,6 +8,8 @@ Set local machine up for API development.
 import configparser
 from getpass import getpass
 import peewee as pw
+import subprocess
+import sys
 from time import sleep
 from api.models import (
     Credentials, Posts
@@ -68,6 +70,18 @@ def set_interactive_credentials():
     ) or config['DEFAULT']['PASSWORD']
 
 
+def setup_virtual_environment():
+    # NOT TESTED ON WINDOWS
+    if sys.platform == 'linux':
+        try:
+            subprocess.call('python3 -m venv venv')
+            subprocess.call('pip3 install -r requirements.txt')
+        except:    # noqa
+            return True
+    return None
+    
+
+
 def generate_config_file():
     """
     Generates an ini file of the configuration which works so far.
@@ -108,6 +122,14 @@ if __name__ == "__main__":
 
     # Freeze the values to a "config.ini" file
     generate_config_file()
+
+    # Attempt setting up the virtual environment in the same directory
+    err = setup_virtual_environment()
+    if err is not None:
+        print(
+            'It is best if you manually setup the virtual environment.'
+            '\nSee https://github.com/roshnet/blogstate-api README.\n' 
+        )
 
     # Finish setup, database looks good, all set!
     sleep(0.5)
