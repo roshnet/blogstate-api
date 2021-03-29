@@ -6,7 +6,7 @@ httpie==1.0.3
 idna==2.8
 mysqlclient==1.4.4
 peewee==3.11.2
-Pygments==2.4.2
+Pygments==2.7.4
 python-dotenv==0.10.3
 requests==2.22.0
 urllib3==1.25.6
