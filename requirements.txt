@@ -2,7 +2,7 @@ certifi==2019.9.11
 chardet==3.0.4
 falcon==2.0.0
 gunicorn==19.9.0
-httpie==1.0.3
+httpie==3.1.0
 idna==2.8
 mysqlclient==1.4.4
 peewee==3.11.2
